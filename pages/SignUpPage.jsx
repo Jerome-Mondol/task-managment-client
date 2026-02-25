@@ -1,11 +1,27 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import MinimalAuthLayout from "../components/auth/AuthLayout";
 import MinimalSignUp from "../components/auth/SignUp";
+import api from "../services/api";
 
 // pages/SignUp.jsx
 const SignUp = () => {
-  const handleSignUp = (name, email, password) => {
-    console.log('Sign up:', { name, email, password });
-    // Add your sign up logic here
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSignUp = async (name, email, password) => {
+    setError("");
+    setIsLoading(true);
+    try {
+      await api.post("/auth/register", { name, email, password });
+      navigate("/signin", { replace: true });
+    } catch (err) {
+      const message = err?.response?.data?.message || "Sign up failed. Please try again.";
+      setError(message);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -13,7 +29,7 @@ const SignUp = () => {
       title="Sign up"
       subtitle="Create your account"
     >
-      <MinimalSignUp onSignUp={handleSignUp} />
+      <MinimalSignUp onSignUp={handleSignUp} error={error} isLoading={isLoading} />
     </MinimalAuthLayout>
   );
 };
