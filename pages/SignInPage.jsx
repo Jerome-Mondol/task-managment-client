@@ -3,11 +3,12 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MinimalSignIn from '../components/auth/SignIn';
 import MinimalAuthLayout from '../components/auth/AuthLayout';
-import api from '../services/api';
+import { useAuth } from '../context/AuthContext';
 
 
 const SignIn = () => {
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
@@ -15,8 +16,8 @@ const SignIn = () => {
     setError('');
     setIsLoading(true);
     try {
-      await api.post('/auth/login', { email, password });
-      navigate('/dashboard');
+      await login(email, password);
+      navigate('/dashboard', { replace: true });
     } catch (err) {
       const message = err?.response?.data?.message || 'Sign in failed. Please try again.';
       setError(message);

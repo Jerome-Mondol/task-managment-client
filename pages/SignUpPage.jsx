@@ -2,11 +2,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MinimalAuthLayout from "../components/auth/AuthLayout";
 import MinimalSignUp from "../components/auth/SignUp";
-import api from "../services/api";
+import { useAuth } from "../context/AuthContext";
 
 // pages/SignUp.jsx
 const SignUp = () => {
   const navigate = useNavigate();
+  const { register } = useAuth();
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -14,7 +15,7 @@ const SignUp = () => {
     setError("");
     setIsLoading(true);
     try {
-      await api.post("/auth/register", { name, email, password });
+      await register(name, email, password);
       navigate("/signin", { replace: true });
     } catch (err) {
       const message = err?.response?.data?.message || "Sign up failed. Please try again.";
