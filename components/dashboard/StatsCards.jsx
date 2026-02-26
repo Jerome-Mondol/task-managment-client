@@ -2,12 +2,12 @@
 import React from 'react';
 import { ListTodo, Inbox, Clock, CheckCheck } from 'lucide-react';
 
-const StatsCards = ({ tasks }) => {
+const StatsCards = ({ tasks, totalCount, counts }) => {
   const stats = [
-    { icon: ListTodo, label: 'Total Tasks', value: tasks.length, color: 'indigo' },
-    { icon: Inbox, label: 'Pending', value: tasks.filter(t => t.status === 'pending').length, color: 'orange' },
-    { icon: Clock, label: 'In Progress', value: tasks.filter(t => t.status === 'in-progress').length, color: 'blue' },
-    { icon: CheckCheck, label: 'Completed', value: tasks.filter(t => t.status === 'completed').length, color: 'green' },
+    { icon: ListTodo, label: 'Total Tasks', value: totalCount ?? counts?.total ?? tasks.length, color: 'indigo' },
+    { icon: Inbox, label: 'Pending', value: counts?.pending ?? tasks.filter(t => t.status === 'pending').length, color: 'orange' },
+    { icon: Clock, label: 'In Progress', value: counts?.inProgress ?? tasks.filter(t => t.status === 'in-progress').length, color: 'blue' },
+    { icon: CheckCheck, label: 'Completed', value: counts?.completed ?? tasks.filter(t => t.status === 'completed').length, color: 'green' },
   ];
 
   const colorClasses = {

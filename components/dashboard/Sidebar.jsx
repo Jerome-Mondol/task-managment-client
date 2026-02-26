@@ -2,12 +2,12 @@
 import React from 'react';
 import { LayoutDashboard, ListTodo, Inbox, CheckCheck } from 'lucide-react';
 
-const Sidebar = ({ sidebarOpen, setSidebarOpen, tasks, activeTab, setActiveTab }) => {
+const Sidebar = ({ sidebarOpen, setSidebarOpen, tasks, counts, activeTab, onSelect }) => {
   const menuItems = [
-    { icon: LayoutDashboard, label: 'Dashboard', value: 'dashboard', count: tasks.length },
-    { icon: ListTodo, label: 'All Tasks', value: 'all', count: tasks.length },
-    { icon: Inbox, label: 'Pending', value: 'pending', count: tasks.filter(t => t.status === 'pending').length },
-    { icon: CheckCheck, label: 'Completed', value: 'completed', count: tasks.filter(t => t.status === 'completed').length },
+    { icon: LayoutDashboard, label: 'Dashboard', value: 'dashboard', count: counts?.total ?? tasks.length },
+    { icon: ListTodo, label: 'In Progress', value: 'in-progress', count: counts?.inProgress ?? tasks.filter(t => t.status === 'in-progress').length },
+    { icon: Inbox, label: 'Pending', value: 'pending', count: counts?.pending ?? tasks.filter(t => t.status === 'pending').length },
+    { icon: CheckCheck, label: 'Completed', value: 'completed', count: counts?.completed ?? tasks.filter(t => t.status === 'completed').length },
   ];
 
   return (
@@ -23,7 +23,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, tasks, activeTab, setActiveTab }
               <button
                 key={item.value}
                 onClick={() => {
-                  setActiveTab(item.value);
+                  if (onSelect) {
+                    onSelect(item.value);
+                  }
                   setSidebarOpen(false);
                 }}
                 className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-colors ${

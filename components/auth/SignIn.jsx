@@ -23,7 +23,7 @@ const MinimalSignIn = ({ onSignIn, error, isLoading }) => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email address"
-            className="text-white w-full px-0 py-2 bg-transparent border-0 border-b border-zinc-200 dark:border-zinc-800 focus:ring-0 focus:border-indigo-500 text-sm transition-colors placeholder:text-zinc-400 dark:placeholder:text-zinc-600"
+            className="w-full px-0 py-2 bg-transparent border-0 border-b border-zinc-200 dark:border-zinc-800 focus:ring-0 focus:border-indigo-500 text-sm text-zinc-900 dark:text-zinc-100 transition-colors placeholder:text-zinc-400 dark:placeholder:text-zinc-600"
             required
           />
         </div>
@@ -34,7 +34,7 @@ const MinimalSignIn = ({ onSignIn, error, isLoading }) => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
-            className="text-white   w-full px-0 py-2 bg-transparent border-0 border-b border-zinc-200 dark:border-zinc-800 focus:ring-0 focus:border-indigo-500 text-sm transition-colors placeholder:text-zinc-400 dark:placeholder:text-zinc-600"
+            className="w-full px-0 py-2 bg-transparent border-0 border-b border-zinc-200 dark:border-zinc-800 focus:ring-0 focus:border-indigo-500 text-sm text-zinc-900 dark:text-zinc-100 transition-colors placeholder:text-zinc-400 dark:placeholder:text-zinc-600"
             required
           />
         </div>

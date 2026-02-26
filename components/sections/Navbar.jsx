@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { CheckCircle2, Menu, Command, ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -66,7 +67,7 @@ const Navbar = () => {
               className="hidden md:flex items-center space-x-2 px-4 py-2 text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors"
             >
               <Command className="w-4 h-4" />
-              <span>Sign in</span>
+              <Link to="/signin" className="text-sm">Sign in</Link>
             </motion.button>
             
             <motion.button 

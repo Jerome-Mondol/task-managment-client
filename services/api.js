@@ -7,4 +7,16 @@ const api = axios.create({
   withCredentials: true,
 });
 
+// Response interceptor to always return response.data
+api.interceptors.response.use(
+  (response) => response.data,
+  (error) => {
+    // Handle errors
+    if (error.response?.status === 401) {
+      // Unauthorized - redirect handled by AuthContext
+    }
+    return Promise.reject(error);
+  }
+);
+
 export default api;

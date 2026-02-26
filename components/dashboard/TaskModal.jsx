@@ -36,7 +36,7 @@ const TaskModal = ({ isOpen, onClose, onSubmit, task, setTask, mode }) => {
               type="text"
               value={task.title}
               onChange={(e) => setTask({ ...task, title: e.target.value })}
-              className="w-full px-4 py-2 bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
+              className="w-full px-4 py-2 bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
               placeholder="Enter task title"
               required
             />
@@ -50,8 +50,9 @@ const TaskModal = ({ isOpen, onClose, onSubmit, task, setTask, mode }) => {
               value={task.description}
               onChange={(e) => setTask({ ...task, description: e.target.value })}
               rows="3"
-              className="w-full px-4 py-2 bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
+              className="w-full px-4 py-2 bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
               placeholder="Enter task description"
+              required
             />
           </div>
 
@@ -62,7 +63,7 @@ const TaskModal = ({ isOpen, onClose, onSubmit, task, setTask, mode }) => {
             <select
               value={task.status}
               onChange={(e) => setTask({ ...task, status: e.target.value })}
-              className="w-full px-4 py-2 bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
+              className="w-full px-4 py-2 bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
             >
               <option value="pending">Pending</option>
               <option value="in-progress">In Progress</option>
@@ -78,7 +79,7 @@ const TaskModal = ({ isOpen, onClose, onSubmit, task, setTask, mode }) => {
               type="date"
               value={task.dueDate}
               onChange={(e) => setTask({ ...task, dueDate: e.target.value })}
-              className="w-full px-4 py-2 bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
+              className="w-full px-4 py-2 bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
             />
           </div>
 
