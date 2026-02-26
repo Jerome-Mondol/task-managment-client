@@ -1,5 +1,3 @@
 routes:
   - path: "/*"
-    methods:
-      - GET
     dest: /index.html
