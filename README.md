@@ -1,16 +1,70 @@
-# React + Vite
+# Task Manager Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+React + Vite frontend for the Task Manager app. It provides a landing page, authentication screens, and a protected dashboard to manage tasks.
 
-Currently, two official plugins are available:
+## Features
+- Public landing page with marketing sections
+- Auth pages for sign in and sign up
+- Protected dashboard with task CRUD
+- Task filtering, search, and pagination
+- Cookie-based auth handling via `/auth/me`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
+- React 19
+- Vite
+- React Router
+- Axios
+- Tailwind CSS
+- Framer Motion
 
-## React Compiler
+## Requirements
+- Node.js (LTS recommended)
+- Backend running on `http://localhost:5000`
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Setup
+```bash
+npm install
+```
 
-## Expanding the ESLint configuration
+## Run in Development
+```bash
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Build
+```bash
+npm run build
+```
+
+## Preview Production Build
+```bash
+npm run preview
+```
+
+## API Base URL
+The client uses a fixed API base URL in `services/api.js`:
+```
+http://localhost:5000/api
+```
+If your backend runs elsewhere, update this value.
+
+## Project Structure
+```
+client/
+	components/        Reusable UI and layout components
+	context/           Auth context and session checks
+	pages/             Route-level pages
+	services/          API client and task service
+	src/               App entry and routing
+```
+
+## Routes
+- `/` Landing page
+- `/signin` Sign in
+- `/signup` Sign up
+- `/dashboard` Protected dashboard
+
+## Notes
+- Authentication is handled with HTTP-only cookies set by the backend.
+- The app checks session status via `GET /auth/me` on load.
